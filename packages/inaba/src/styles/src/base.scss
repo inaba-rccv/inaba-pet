@@ -1,0 +1,337 @@
+body {
+	background-color: #f9fafb;
+	line-height: var(--reby-line-height-default); //
+	font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+* {
+	box-sizing: border-box;
+	border-style: solid;
+	border-width: 0;
+}
+
+/** 样式重置 */
+uni-button {
+	line-height: 1!important;
+	&::after {
+		border: none!important;
+	}
+	&[plain] {
+		border: none!important;
+	}
+	&[loading]::before {
+		content: unset!important;
+	}
+}
+a {
+	// font-size: var(--reby-font-size-small);
+	color: var(--reby-color-primary);
+}
+
+p:empty::before {
+  content: "\200B";
+}
+
+
+/** 通用布局 */
+.default-page {
+	box-sizing: border-box;
+	padding: 16px;
+}
+
+.relative {
+	position: relative;
+}
+
+.fixed {
+	position: fixed;
+}
+.right-0 {
+	right: 0px;
+}
+.left-0 {
+	left: 0px;
+}
+.top-0 {
+	top: 0;
+}
+
+/* #ifdef APP */
+.bottom-0 {
+	bottom: 0;
+}
+.bottom-0-tabbar {
+	bottom: 0;
+}
+/* #endif */
+/* #ifdef H5 */
+.bottom-0 {
+	bottom: 0;
+}
+.bottom-0-tabbar {
+	bottom: var(--reby-tabbar-height);
+}
+/* #endif */
+
+.flex {
+	display: flex;
+}
+.flex-column {
+	flex-direction: column;
+}
+.flex-center {
+	justify-content: center;
+	align-items: center;
+}
+.justify-center {
+	justify-content: center;
+}
+.align-center {
+	align-items: center;
+}
+.justify-between {
+	justify-content: space-between;
+}
+.flex-1 {
+	flex: 1 1 0%;
+}
+.flex-noshrink {
+	flex-shrink: 0;
+}
+
+.grid {
+	display: grid;
+}
+.grid-cols-2 {
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.grid-cols-3 {
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.gap {
+	gap: var(--reby-spacing-default)
+}
+
+$layouts: (
+  'pd': padding,
+  'pt': padding-top,
+  'pb': padding-bottom,
+  'pr': padding-right,
+  'pl': padding-left,
+  'mg': margin,
+  'mt': margin-top,
+  'mb': margin-bottom,
+  'ml': margin-left,
+  'mr': margin-right,
+) !default;
+
+@each $name, $style in $layouts {
+	.#{$name} {
+		#{$style}: var(--reby-spacing-default)
+	}
+	.#{$name}-xs {
+		#{$style}: calc(var(--reby-spacing-small) / 2)
+	}
+	.#{$name}-sm {
+		#{$style}: var(--reby-spacing-small)
+	}
+	.#{$name}-lg {
+		#{$style}: var(--reby-spacing-large)
+	}
+	.#{$name}-2 {
+		#{$style}: calc(var(--reby-spacing-default) * 2)
+	}
+}
+
+.mg-auto {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.ml-auto {
+	margin-left: auto;
+}
+
+.mr-auto {
+	margin-right: auto;
+}
+
+/** 文字 */
+.text-center {
+	text-align: center;
+}
+.text-left {
+	text-align: left;
+}
+.text-right {
+	text-align: right;
+}
+.text-extra-small {
+	font-size: var(--reby-font-size-extra-small);
+}
+.text-small {
+	font-size: var(--reby-font-size-small);
+}
+.text-default {
+	font-size: var(--reby-font-size-default);
+}
+.text-large {
+	font-size: var(--reby-font-size-large);
+}
+.text-extra-large {
+	font-size: var(--reby-font-size-extra-large);
+}
+.text-bold {
+	font-weight: var(--reby-font-weight-bold);
+}
+.text-bolder {
+	font-weight: var(--reby-font-weight-bolder);
+}
+
+.text-primary {
+	color: var(--reby-color-primary)
+}
+.text-success {
+	color: var(--reby-color-success)
+}
+.text-warning {
+	color: var(--reby-color-warning)
+}
+.text-danger {
+	color: var(--reby-color-danger)
+}
+.text-info {
+	color: var(--reby-color-info)
+}
+.text-tooltip {
+	color: var(--reby-color-tooltip)
+}
+.text-dark {
+	color: var(--reby-color-dark)
+}
+.text-light {
+	color: var(--reby-color-light)
+}
+
+.text-opacity {
+	opacity: .6;
+}
+
+.text-ellipsis-1 {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	display: block;  /* 或 inline-block 都可以 */
+}
+
+.text-ellipsis-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.text-ellipsis-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.text-wrap {
+	word-wrap: break-word;
+}
+
+/** 背景色 */
+.background-white {
+	background-color: #fff;
+}
+/** 背景色 */
+.background-grey {
+	background-color: var(--reby-color-info-plain);
+}
+.background-primary-linear {
+	background-image: linear-gradient(to bottom right, var(--reby-color-gradient));
+}
+.background-azure-linear {
+	background-image: linear-gradient(to right, rgb(239, 246, 255), rgb(250, 245, 255));
+}
+
+
+/** 段落 */
+h1 {
+	font-size: var(--reby-font-size-extra-large);
+	font-weight: var(--reby-font-weight-bolder);
+	line-height: inherit;
+}
+
+h2 {
+	font-size: var(--reby-font-size-large);
+	font-weight: var(--reby-font-weight-bolder);
+	margin-bottom: var(--reby-spacing-default);
+	margin-bottom: var(--reby-spacing-default);
+	line-height: inherit;
+}
+
+h3 {
+	font-size: var(--reby-font-size-default);
+	font-weight: var(--reby-font-weight-bold);
+	line-height: inherit;
+}
+
+h4 {
+	font-size: var(--reby-font-size-small);
+	font-weight: var(--reby-font-weight-bold);
+	line-height: inherit;
+}
+
+/** 边框 */
+.border-r {
+	border-right-width: 1px;
+}
+.border-l {
+	border-left-width: 1px;
+}
+.border-t {
+	border-top-width: 1px;
+}
+.border-b {
+	border-bottom-width: 1px;
+}
+.border-white {
+	border-color: var(--reby-color-border-light);
+}
+.border-dark {
+	border-color: var(--reby-color-border-dark);
+}
+
+.round {
+	border-radius: var(--reby-border-radius-default);
+}
+.round-sm {
+	border-radius: var(--reby-border-radius-small);
+}
+.round-lg {
+	border-radius: var(--reby-border-radius-large);
+}
+
+/** 盒内样式 */
+.width-full {
+	width: 100%
+}
+.height-full {
+	height: 100%;
+}
+
+.box-shadow {
+	box-shadow: 0 10px 15px -3px rgb(0 0 0/0.1), 0 4px 6px -4px rgb(0 0 0/0.1)
+}
+
+.clickable {
+	cursor: pointer;
+	&:active {
+		background-color: var(--reby-color-info-plain);
+	}
+}

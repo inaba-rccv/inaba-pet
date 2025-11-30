@@ -1,0 +1,25 @@
+{
+  "name": "@inaba/client",
+  "type": "module",
+  "version": "0.0.2",
+  "description": "A cute table pet",
+  "author": {
+    "name": "Inaba"
+  },
+  "main": "src/main.ts",
+  "build": {
+    "appId": "com.inaba.client",
+    "productName": "InabaPet",
+    "win": {
+      "icon": "assets/icon.ico"
+    }
+  },
+  "scripts": {
+    "dev": "cross-env VITE_DEV_SERVER_URL=http://localhost:5173 electron .",
+    "build": "tsc -p tsconfig.json",
+    "dist": "electron-builder"
+  },
+  "devDependencies": {
+    "electron": "^39.2.4"
+  }
+}

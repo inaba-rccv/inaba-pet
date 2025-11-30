@@ -1,0 +1,35 @@
+@use "./src/base.scss";
+@use "./src/animation.scss";
+@use "./src/color.scss";
+@use "./src/size.scss";
+
+
+:root {
+  --header-height: 52px; /* 顶部导航栏高度 */
+  --border-color: #dcdfe6; /* 边框颜色 */
+  --color-bg: #fff;
+  --color-text: #242424;
+}
+
+body, html {
+  height: 100%;
+  padding: 0;
+  overflow: hidden;
+  margin: 0;
+  font-family: 'Pragmatica SlabserifBold', sans-serif; /* 使用自定义字体 */
+  text-rendering: optimizeLegibility;
+  color: var(--color-text);
+  // pointer-events: none;
+  background-color: transparent;
+}
+
+.dark {
+  --color-bg: #242424;
+  --color-text: rgba(255, 255, 255, 0.87);
+  --border-color: #4C4D4F; /* 边框颜色 */
+}
+
+.clickable {
+  // pointer-events: auto;
+  cursor: pointer;
+}

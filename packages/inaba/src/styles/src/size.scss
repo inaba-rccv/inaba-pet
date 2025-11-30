@@ -1,0 +1,69 @@
+/**
+ * 文字尺寸
+ */
+$reby-font-size-extra-small: 12px;
+$reby-font-size-small: 14px;
+$reby-font-size-default: 16px;
+$reby-font-size-large: 20px;
+$reby-font-size-extra-large: 24px;
+$reby-font-weight-bold: 600;
+$reby-font-weight-bolder: 700;
+
+/** 组件间距 */
+$reby-spacing-small: 0.5rem;
+$reby-spacing-default: 1rem;
+$reby-spacing-large: 1.5rem;
+
+/**
+ * 圆边
+ */
+$reby-border-radius-small: 0.5rem;
+$reby-border-radius-default: 1rem;
+$reby-border-radius-large: 1.5rem;
+
+/** 行高 */
+$reby-line-height-default: 1.5rem;
+
+/** 公用组件 */
+$reby-tabbar-height: 60px;
+$reby-icon-size-small: 32px;
+$reby-icon-size-default: 40px;
+$reby-icon-size-large: 48px;
+$reby-button-padding-small: 8px 16px;
+$reby-button-padding-default: 12px 24px;
+$reby-button-padding-large: 16px 32px;
+$reby-tag-padding-default: 0 8px;
+
+:root {
+	--reby-font-size-extra-small: #{$reby-font-size-extra-small};
+	--reby-font-size-small: #{$reby-font-size-small};
+	--reby-font-size-default: #{$reby-font-size-default};
+	--reby-font-size-large: #{$reby-font-size-large};
+	--reby-font-size-extra-large: #{$reby-font-size-extra-large};
+	--reby-font-weight-bold: #{$reby-font-weight-bold};
+	--reby-font-weight-bolder: #{$reby-font-weight-bolder};
+	
+	--reby-spacing-small: #{$reby-spacing-small};
+	--reby-spacing-default: #{$reby-spacing-default};
+	--reby-spacing-large: #{$reby-spacing-large};
+	
+	--reby-padding-small: #{$reby-spacing-small};
+	--reby-padding-default: #{$reby-spacing-default};
+	--reby-padding-large: #{$reby-spacing-large};
+	
+	--reby-border-radius-small: #{$reby-border-radius-small};
+	--reby-border-radius-default: #{$reby-border-radius-default};
+	--reby-border-radius-large: #{$reby-border-radius-large};
+	
+	--reby-line-height-default: #{$reby-line-height-default};
+	
+	--reby-tabbar-height: #{$reby-tabbar-height};
+	--reby-icon-size-small: #{$reby-icon-size-small};
+	--reby-icon-size-default: #{$reby-icon-size-default};
+	--reby-icon-size-large: #{$reby-icon-size-large};
+	--reby-button-padding-small: #{$reby-button-padding-small};
+	--reby-button-padding-default: #{$reby-button-padding-default};
+	--reby-button-padding-large: #{$reby-button-padding-large};
+	--reby-tag-padding-default: #{$reby-tag-padding-default};
+	
+}

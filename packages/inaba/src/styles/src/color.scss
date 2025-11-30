@@ -1,0 +1,66 @@
+@use "sass:color";
+
+/**
+ * 主题颜色
+ */
+$reby-primary: #2563eb;
+$reby-success: #16a34a;
+$reby-warning: #ea952d;
+$reby-danger: #dc2626;
+$reby-info: #9ca3af;
+$reby-tooltip: #9333ea;
+
+$reby-colors: (
+  'primary': $reby-primary,
+  'success': $reby-success,
+  'warning': $reby-warning,
+  'danger': $reby-danger,
+  'info': $reby-info,
+  'tooltip': $reby-tooltip,
+) !default;
+
+// 这个颜色动态生成会有偏差
+$reby-primary-plain: #eff6ff;
+$reby-success-plain: #f0fdf4;
+$reby-danger-plain: #fef2f2;
+$reby-warning-plain: #fff7ed;
+$reby-info-plain: #f3f4f6;
+$reby-tooltip-plain: #faf5ff;
+$reby-plain-colors: (
+  'primary-plain': $reby-primary-plain,
+  'success-plain': $reby-success-plain,
+  'warning-plain': $reby-warning-plain,
+  'danger-plain': $reby-danger-plain,
+  'info-plain': $reby-info-plain,
+  'tooltip-plain': $reby-tooltip-plain,
+) !default;
+
+/** 额外的主题颜色 */
+$reby-dark: #374151;
+$reby-light: #f9fafb;
+$reby-gray: #d1d5db;
+
+$reby-border-light: rgba(255, 255, 255, .2);
+$reby-border-dark: #f3f4f6;
+$reby-transparent-white: rgba(255, 255, 255, .2);
+
+:root {
+	@each $name, $color in $reby-colors {
+		--reby-color-#{$name}: #{$color};
+		--reby-color-#{$name}-light: #{color.scale($color, $lightness: 10%)};
+		--reby-color-#{$name}-dark: #{color.scale($color, $lightness: -5%)};
+	}
+	
+	@each $name, $color in $reby-plain-colors {
+		--reby-color-#{$name}: #{$color};
+	}
+	
+	--reby-color-dark: #{$reby-dark};
+	--reby-color-light: #{$reby-light};
+	--reby-color-gray: #{$reby-gray};
+	--reby-color-gradient: #{$reby-primary}, #{$reby-tooltip};
+	
+	--reby-color-border-light: #{$reby-border-light};
+	--reby-color-border-dark: #{$reby-border-dark};
+	--reby-transparent-white: #{$reby-transparent-white};
+}

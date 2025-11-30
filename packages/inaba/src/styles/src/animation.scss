@@ -1,0 +1,31 @@
+// 翻转进入 + 左下淡出
+.scaleSlide-enter-active {
+  transition: all 1s;
+  transition-timing-function: var(--timing-function-ease-in-out);
+}
+
+.scaleSlide-leave-active {
+  transition: all 1s;
+  transition-timing-function: var(--timing-function-ease-in-out);
+  transform-origin: bottom right;
+}
+
+.scaleSlide-enter-from {
+  scale: 0.5;
+  transform: rotateY(112deg);
+}
+
+.scaleSlide-enter-to {
+  scale: 1;
+  transform: rotateY(0deg);
+}
+
+.scaleSlide-leave-from {
+  scale: 1;
+  opacity: 1;
+}
+
+.scaleSlide-leave-to {
+  scale: 0;
+  opacity: 0;
+}
