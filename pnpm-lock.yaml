@@ -8,7 +8,7 @@ importers:
 
   .:
     devDependencies:
-      '@inaba-pet/types':
+      '@inabapet/types':
         specifier: workspace:*
         version: link:packages/types
       '@types/node':

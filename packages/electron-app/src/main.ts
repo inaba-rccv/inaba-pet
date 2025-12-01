@@ -8,8 +8,10 @@ const __dirname = path.dirname(__filename);
 
 const createWindow = () => {
   const win = new BrowserWindow({
-    width: 50,
-    height: 76,
+    // width: 50,
+    // height: 76,
+    width: 130,
+    height: 120,
     frame: false,
     transparent: true,
     alwaysOnTop: true,

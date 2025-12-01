@@ -1,13 +1,13 @@
 {
-  "name": "@inaba-pet/monorepo",
+  "name": "@inabapet/monorepo",
   "version": "0.0.1",
   "description": "",
   "packageManager": "pnpm@10.9.0",
   "scripts": {
-    "dev": "concurrently \"pnpm --filter @inaba-pet/electron-app dev\" \"pnpm --filter @inaba-pet/pet-renderer dev\"",
-    "build": "pnpm -r --filter @inaba-pet/electron-app dist",
-    "prebuild": "pnpm -r --filter @inaba-pet/pet-renderer build-only",
-    "types:build": "pnpm -r --filter @inaba-pet/types build"
+    "dev": "concurrently \"pnpm --filter @inabapet/electron-app dev\" \"pnpm --filter @inabapet/pet-renderer dev\"",
+    "build": "pnpm -r --filter @inabapet/electron-app dist",
+    "cores:build": "pnpm -r --filter @inabapet/pet-renderer build-only",
+    "types:build": "pnpm -r --filter @inabapet/types build"
   },
   "keywords": ["table pet"],
   "author": {
@@ -15,7 +15,7 @@
   },
   "license": "ISC",
   "devDependencies": {
-    "@inaba-pet/types": "workspace:*",
+    "@inabapet/types": "workspace:*",
     "@types/node": "^24.10.1",
     "concurrently": "^9.2.1",
     "cross-env": "^10.1.0",

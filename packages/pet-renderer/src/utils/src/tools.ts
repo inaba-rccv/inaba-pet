@@ -1,5 +1,5 @@
-import type { Character } from "@/types/Character";
+import type { CharacterAssets } from "@inabapet/types" 
 
-export function extractSpriteImageSrc(character: Character): string[] {
+export function extractSpriteImageSrc(character: CharacterAssets): string[] {
   return Object.values(character.sprites).map(sprite => sprite.src)
 }

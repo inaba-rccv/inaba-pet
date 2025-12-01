@@ -2,11 +2,11 @@
 @use "./src/animation.scss";
 @use "./src/color.scss";
 @use "./src/size.scss";
+@use "./resize.scss";
 
 
 :root {
-  --header-height: 52px; /* 顶部导航栏高度 */
-  --border-color: #dcdfe6; /* 边框颜色 */
+  --border-color: #01032b;
   --color-bg: #fff;
   --color-text: #242424;
 }
@@ -19,7 +19,6 @@ body, html {
   font-family: 'Pragmatica SlabserifBold', sans-serif; /* 使用自定义字体 */
   text-rendering: optimizeLegibility;
   color: var(--color-text);
-  // pointer-events: none;
   background-color: transparent;
 }
 
@@ -30,11 +29,5 @@ body, html {
 }
 
 .clickable {
-  // pointer-events: auto;
   cursor: pointer;
-}
-
-.ui-message-box {
-  scale: 0.4;
-  transform-origin: 0 0;
 }

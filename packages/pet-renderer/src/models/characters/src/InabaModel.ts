@@ -1,6 +1,6 @@
-import type { Character } from "@/types/Character";
+import type { CharacterAssets } from "@inabapet/types" 
 
-export const InabaCharacter: Character = {
+export const Inaba: CharacterAssets = {
   name: "inaba",
   sprites: {
     'walk': {

@@ -1,8 +1,8 @@
-import type { SpriteState } from "@/types/SpriteState";
-import { reactive } from "vue";
+import type { SpriteModelState } from "@inabapet/types"; 
+import { reactive, ref } from "vue";
 
 export function useSpriteMovement(keyState: Map<string, boolean>) {
-  const spriteState = reactive<SpriteState>({
+  const spriteState = reactive<SpriteModelState>({
     transformX: 0,
     transformY: 0,
     flip: false,
@@ -36,7 +36,6 @@ export function useSpriteMovement(keyState: Map<string, boolean>) {
     }
     requestAnimationFrame(update)
   })
-
   return {
     spriteState,
   }

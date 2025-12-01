@@ -1,0 +1,12 @@
+.percent-bar__container {
+  box-sizing: border-box;
+  border: 1px solid var(--border-color);
+  width: 100%;
+  opacity: 0;
+  transition-duration: .1s;
+  .percent-bar__inner {
+    width: var(--percent);
+    height: 4px;
+    background-color: var(--ui-color-primary);
+  }
+}

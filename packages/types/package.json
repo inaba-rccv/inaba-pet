@@ -1,5 +1,5 @@
 {
-  "name": "@inaba-pet/types",
+  "name": "@inabapet/types",
   "version": "1.0.0",
   "types": "dist/index.d.ts",
   "files": [
