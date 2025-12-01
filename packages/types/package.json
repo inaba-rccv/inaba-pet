@@ -1,0 +1,11 @@
+{
+  "name": "@inaba-pet/types",
+  "version": "1.0.0",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc"
+  }
+}

@@ -1,4 +1,4 @@
-import type { SpriteState } from "@/types/SpriteState"
+import type { SpriteState } from "@inaba-pet/types" 
 import { reactive } from "vue"
 
 export function useSprite(keyState: Map<string, boolean>) {

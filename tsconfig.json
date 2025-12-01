@@ -8,7 +8,7 @@
     "lib": ["ESNext", "DOM"],
     "baseUrl": ".",
     "paths": {
-      "@inaba/client*": ["packages/client/*"]
+      "@inaba-pet/types": ["packages/types/src/index.ts"]
     },
     "resolveJsonModule": true,
     "sourceMap": true,

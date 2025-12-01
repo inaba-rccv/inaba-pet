@@ -33,3 +33,8 @@ body, html {
   // pointer-events: auto;
   cursor: pointer;
 }
+
+.ui-message-box {
+  scale: 0.4;
+  transform-origin: 0 0;
+}

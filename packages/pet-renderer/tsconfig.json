@@ -14,5 +14,6 @@
   "compilerOptions": {
     "outDir": "dist"
   },
-  "include": ["electron/**/*.ts"]
+  "include": ["electron/**/*.ts"],
+  "extends": "../../tsconfig.json"
 }
