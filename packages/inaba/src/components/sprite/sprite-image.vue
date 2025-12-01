@@ -13,7 +13,7 @@ withDefaults(defineProps<{
     <div
       class="sprite-image"
       :style="{
-        '--frame': frame - 1,
+        '--frame': frame,
         backgroundImage: `url(${src})`
       }"
     ></div>
