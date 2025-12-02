@@ -37,7 +37,6 @@ export function useSprite(keyState: Map<string, boolean>) {
     if (dx !== 0 || dy !== 0) {
       window.electronAPI.sendMove({ dx, dy })
     }
-    console.log()
     requestAnimationFrame(update)
   })
   return {

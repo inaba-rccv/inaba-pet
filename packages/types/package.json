@@ -1,7 +1,8 @@
 {
   "name": "@inabapet/types",
+  "main": "dist/index.d.ts",
   "version": "1.0.0",
-  "types": "dist/index.d.ts",
+  "types": "dist/index.js",
   "files": [
     "dist"
   ],

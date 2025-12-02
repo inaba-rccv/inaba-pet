@@ -23,7 +23,9 @@ const createWindow = () => {
       contextIsolation: true,
       preload: path.join(__dirname, 'modules', 'preload', 'index.js'),
     }
+
   })
+  win.setIgnoreMouseEvents(true, { forward: true })
 
   if (isDev) {
     win.loadURL(process.env.VITE_DEV_SERVER_URL!)
@@ -49,16 +51,22 @@ app.on('window-all-closed', () => {
   }
 })
 
+const windowWatchMap: Map<Electron.BrowserWindow, Function> = new Map()
+
 ipcMain.on('move-window', (event, { dx, dy }) => {
   const mainWindow = BrowserWindow.fromWebContents(event.sender);
-
-  // 1. 获取当前窗口位置
   const [currentX, currentY] = mainWindow!.getPosition();
-
-  // 2. 计算新位置
   const newX = currentX + dx;
   const newY = currentY + dy;
-
-  // 3. 设置新位置
   mainWindow!.setPosition(newX, newY);
-});
+})
+
+ipcMain.on('mouse-ignore', (event, { state }) => {
+  const mainWindow = BrowserWindow.fromWebContents(event.sender);
+  mainWindow?.setIgnoreMouseEvents(state, { forward: true })
+})
+
+ipcMain.on('message', (event, callback) => {
+  const mainWindow = BrowserWindow.fromWebContents(event.sender);
+  mainWindow && windowWatchMap.set(mainWindow, callback)
+})

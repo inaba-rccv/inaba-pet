@@ -6,11 +6,10 @@ import { useSpriteMovement } from '@/hooks/use-sprite-movement';
 import { CharacterModels } from '@/models';
 import { ChatService } from '@/modules';
 import { extractSpriteImageSrc, preloadImage } from '@/utils';
-import type { CharacterInstance, SpriteModelState } from '@inabapet/types' 
+import type { CharacterInstance, DialogueData, DialogueOption, SpriteModelState } from '@inabapet/types' 
 import StateBar from "@/components/state-bar/index.vue"
-import { computed, onMounted, getCurrentInstance } from 'vue'
-const instance = getCurrentInstance()
-const { $MessageBox } = instance!.appContext.config.globalProperties
+import DialogBox from "@/components/dialog-box/index.vue"
+import { computed, onMounted, ref } from 'vue'
 
 const props = withDefaults(defineProps<{
   data: CharacterInstance
@@ -26,16 +25,38 @@ if (window.electronAPI) {
 const model = computed(() => CharacterModels.get(props.data.name))
 const chatService = new ChatService()
 
+const dialogVisiable = ref(false)
+const dialogOption = ref<DialogueData>()
 function clickSpriteEvent() {
-  const soliloquize = chatService.getSoliloquize()
-  $MessageBox.confirm({
-    message: soliloquize.message,
-    draggable: false,
-    // x: 0,
-    // y: 0,
-    // overflow: false
-  })
-  props.data.attribution.health -= 1
+  if (dialogVisiable.value) {
+    return
+  }
+  dialogOption.value = chatService.getDialogue()
+  dialogVisiable.value = true
+}
+
+const hypothesisActiveState = ref(false)
+function mouseEnterEvent() {
+  if (hypothesisActiveState.value) return
+  hypothesisActiveState.value = true
+  window.electronAPI?.setMouseIgnore({ state: false })
+}
+function mouseLeaveEvent() {
+  if (!hypothesisActiveState.value) return
+  hypothesisActiveState.value = false
+  window.electronAPI?.setMouseIgnore({ state: true })
+}
+function dialogConfirmEvent(option: DialogueOption) {
+  // TODO handler event
+  if (option.event === 'favorUp') {
+    props.data.attribution.favor = Math.min(props.data.attribution.favor + option.payload![0], 100)
+  } else if (option.event === 'favorDown') {
+    props.data.attribution.favor = Math.max(props.data.attribution.favor - option.payload![0], 0)
+  } else if (option.event === 'healthUp') {
+    props.data.attribution.health = Math.min(props.data.attribution.health + option.payload![0], 100)
+  } else if (option.event === 'healthDown') {
+    props.data.attribution.health = Math.max(props.data.attribution.health - option.payload![0], 0)
+  }
 }
 
 onMounted(() => {
@@ -44,16 +65,28 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="sprite-main relative">
+  <div
+    class="sprite-main relative"
+    :style="{
+      transform: `translate(${spriteState.transformX}px, ${spriteState.transformY}px)`,
+    }"
+    @mouseenter="mouseEnterEvent"
+    @mouseleave="mouseLeaveEvent"
+  >
     <sprite-image
       v-if="model"
       :frame="model.sprites[spriteState.state].frame"
       :src="model.sprites[spriteState.state].src"
       :style="{
-        transform: `translate(${spriteState.transformX}px, ${spriteState.transformY}px) scaleX(${spriteState.flip ? -1 : 1})`,
+        transform: `scaleX(${spriteState.flip ? -1 : 1})`,
       }"
       @click="clickSpriteEvent"
     />
     <state-bar v-if="data.stateBarVisiable" :option="data.attribution"></state-bar>
+    <dialog-box
+      v-model="dialogVisiable"
+      :option="dialogOption!"
+      @confirm="dialogConfirmEvent"  
+    ></dialog-box>
   </div>
 </template>

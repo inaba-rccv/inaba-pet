@@ -1,3 +1,5 @@
 export * from "./pet/Sprite"
 export * from "./pet/Character"
 export * from "./chat/Soliloquize"
+export * from "./chat/Dialogue"
+export * from "./event/PetEvent"
