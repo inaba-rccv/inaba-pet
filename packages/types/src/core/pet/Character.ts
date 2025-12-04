@@ -1,3 +1,5 @@
+import { AdventureData } from "../adventure/AdventureData"
+
 export type CharacterAnimationState = 'stand' | 'walk'
 
 export interface CharacterAssets {
@@ -9,17 +11,10 @@ export interface CharacterAssets {
     }
   }
 }
-
-export interface CharacterAttribution {
-  health: number
-  favor: number
-  satiety: number
-}
-
 export interface CharacterInstance {
   id: string
   name: string
-  attribution: CharacterAttribution
+  adventureData: AdventureData
   isPrimary: boolean
   stateBarVisiable: boolean
 }

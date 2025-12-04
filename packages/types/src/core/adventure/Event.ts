@@ -1,4 +1,4 @@
-export type PetEvent = 
+export type AttributionEvent = 
   | 'favorUp' 
   | 'favorDown'
   | 'healthUp'

@@ -1,11 +1,11 @@
-import type { CharacterAttribution } from "@inabapet/types";
+import type { CharacterAdventureAttribution } from "@inabapet/types";
 
 export class CharacterModule {
   constructor(
-    private state: CharacterAttribution
+    private state: CharacterAdventureAttribution
   ) {}
 
-  setAttribution(attr: CharacterAttribution) {
+  setAttribution(attr: CharacterAdventureAttribution) {
     this.state = attr
   }
 

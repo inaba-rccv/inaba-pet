@@ -1,10 +1,10 @@
 import { ThemeColorType } from "../../shared"
-import { PetEvent } from "../event/PetEvent"
+import { AttributionEvent } from "../adventure/Event"
 
 export interface DialogueOption {
   label: string
   type: ThemeColorType
-  event?: PetEvent
+  event?: AttributionEvent
   payload?: any[]
 }
 

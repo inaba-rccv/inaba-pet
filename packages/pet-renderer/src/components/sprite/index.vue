@@ -49,13 +49,13 @@ function mouseLeaveEvent() {
 function dialogConfirmEvent(option: DialogueOption) {
   // TODO handler event
   if (option.event === 'favorUp') {
-    props.data.attribution.favor = Math.min(props.data.attribution.favor + option.payload![0], 100)
+    props.data.adventureData.attribution.favor = Math.min(props.data.adventureData.attribution.favor + option.payload![0], 100)
   } else if (option.event === 'favorDown') {
-    props.data.attribution.favor = Math.max(props.data.attribution.favor - option.payload![0], 0)
+    props.data.adventureData.attribution.favor = Math.max(props.data.adventureData.attribution.favor - option.payload![0], 0)
   } else if (option.event === 'healthUp') {
-    props.data.attribution.health = Math.min(props.data.attribution.health + option.payload![0], 100)
+    props.data.adventureData.attribution.health = Math.min(props.data.adventureData.attribution.health + option.payload![0], 100)
   } else if (option.event === 'healthDown') {
-    props.data.attribution.health = Math.max(props.data.attribution.health - option.payload![0], 0)
+    props.data.adventureData.attribution.health = Math.max(props.data.adventureData.attribution.health - option.payload![0], 0)
   }
 }
 
@@ -82,7 +82,7 @@ onMounted(() => {
       }"
       @click="clickSpriteEvent"
     />
-    <state-bar v-if="data.stateBarVisiable" :option="data.attribution"></state-bar>
+    <state-bar v-if="data.stateBarVisiable" :option="data.adventureData.attribution"></state-bar>
     <dialog-box
       v-model="dialogVisiable"
       :option="dialogOption!"

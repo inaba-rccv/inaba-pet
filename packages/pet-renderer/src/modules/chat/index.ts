@@ -66,9 +66,9 @@ export class ChatService {
             type: 'warning'
           },
           {
-            label: '我草死你',
+            label: '爬',
             event: 'healthDown',
-            payload: [50],
+            payload: [20],
             type: 'danger'
           },
         ]

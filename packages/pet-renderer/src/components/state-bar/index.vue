@@ -1,11 +1,11 @@
 <script lang="ts" setup>
 import "./index.scss"
 import { computed } from "vue";
-import type { CharacterAttribution } from '@inabapet/types'
+import type { CharacterAdventureAttribution } from '@inabapet/types'
 import PercentBar from "@/components/percent-bar/index.vue"
 
 const props = withDefaults(defineProps<{
-  option: CharacterAttribution
+  option: CharacterAdventureAttribution
 }>(), {})
 
 const hpPercent = computed(() => props.option.health + '%')
