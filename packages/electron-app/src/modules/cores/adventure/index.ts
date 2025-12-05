@@ -1,34 +1,4 @@
-// import { CombatUnitAttribution } from "@inabapet/types"
-
-interface CombatUnitAttribution {
-  id: string
-  name: string
-  health: number
-  maxHealth: number
-  attack: number
-  defense: number
-  speed: number
-}
-
-interface CombatUnit {
-  attribution: CombatUnitAttribution
-  target: CombatUnitAttribution
-}
-
-interface CombatOption {
-  combatUnit: CombatUnitAttribution[]
-}
-
-interface BehaviorLog {
-  from: CombatUnitAttribution
-  to: CombatUnitAttribution
-  behavior: Behavior
-  damage: number
-}
-
-type Behavior = 'attack'
-
-type CombatState = 'waiting' | 'finished'
+import type { CombatUnitAttribution, CombatUnit, CombatOption, BehaviorLog, CombatState } from "@inabapet/types"
 
 export class Combat {
   private unit: CombatUnitAttribution[]

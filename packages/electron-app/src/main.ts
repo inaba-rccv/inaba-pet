@@ -1,7 +1,6 @@
 import { app, BrowserWindow, ipcMain } from 'electron'
 import { fileURLToPath } from 'url'
 import path from 'path'
-import { Combat } from './modules/cores/index.ts';
 
 const isDev = !!process.env.VITE_DEV_SERVER_URL
 const __filename = fileURLToPath(import.meta.url);
@@ -9,8 +8,8 @@ const __dirname = path.dirname(__filename);
 
 const createWindow = () => {
   const win = new BrowserWindow({
-    // width: 50,
-    // height: 76,
+    // width: 500,
+    // height: 760,
     width: 130,
     height: 120,
     frame: false,
@@ -20,20 +19,19 @@ const createWindow = () => {
     skipTaskbar: true,
     webPreferences: {
       // nodeIntegration: true,
-      // contextIsolation: false
       contextIsolation: true,
       preload: path.join(__dirname, 'modules', 'preload', 'index.js'),
     }
-
   })
-  win.setIgnoreMouseEvents(true, { forward: true })
+  win.setIgnoreMouseEvents(false, { forward: true })
 
   if (isDev) {
     win.loadURL(process.env.VITE_DEV_SERVER_URL!)
-    // win.webContents.openDevTools()
-    // win.loadFile('./assets/dist/index.html')
+    win.webContents.openDevTools()
   } else {
-    win.loadFile('./assets/dist/index.html')
+    const rendererPath = path.join(process.resourcesPath, 'renderer/index.html')
+    win.loadFile(rendererPath)
+    // win.webContents.openDevTools()
   }
 }
 

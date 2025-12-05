@@ -12,11 +12,16 @@ const init = (app: any) => {
         favor: 5,
         health: 100,
         satiety: 100,
-        maxHealth: 100
+        maxHealth: 100,
+        attack: 10,
+        defense: 0,
+        speed: 5,
       },
       items: []
     }
   })
+
+  console.log(window.electronAPI)
 }
 
 export const appInit = {

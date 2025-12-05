@@ -1,4 +1,5 @@
 {
+  "extends": "../../tsconfig.json",
   "files": [],
   "references": [
     {
@@ -15,5 +16,4 @@
     "outDir": "dist"
   },
   "include": ["electron/**/*.ts"],
-  "extends": "../../tsconfig.json"
 }
