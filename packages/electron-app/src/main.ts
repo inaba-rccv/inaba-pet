@@ -20,7 +20,7 @@ const createWindow = () => {
     webPreferences: {
       // nodeIntegration: true,
       contextIsolation: true,
-      preload: path.join(__dirname, 'modules', 'preload', 'index.js'),
+      preload: path.join(__dirname, 'preload', 'index.js'),
     }
   })
   win.setIgnoreMouseEvents(false, { forward: true })

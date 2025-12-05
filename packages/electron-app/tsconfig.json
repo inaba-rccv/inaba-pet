@@ -3,10 +3,9 @@
   "compilerOptions": {
     "baseUrl": ".",
     "outDir": "./dist",
+    "allowImportingTsExtensions": true,
+    "noEmit": true
   },
   "include": ["src/**/*"],
-  "references": [
-    { "path": "../types" } // 用于preload编译
-  ],
   "exclude": ["dist", "node_modules"]
 }
