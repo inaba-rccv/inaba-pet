@@ -1,6 +1,7 @@
-import { app, BrowserWindow, ipcMain } from 'electron';
-import { fileURLToPath } from 'url';
-import path from 'path';
+import { app, BrowserWindow, ipcMain } from 'electron'
+import { fileURLToPath } from 'url'
+import path from 'path'
+import { Combat } from './modules/cores/index.ts';
 
 const isDev = !!process.env.VITE_DEV_SERVER_URL
 const __filename = fileURLToPath(import.meta.url);

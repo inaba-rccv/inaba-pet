@@ -2,8 +2,6 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "./dist",
-    // 可以覆盖根配置中的特定选项
-    "rootDir": "./src"
   },
   "exclude": ["dist", "node_modules"]
 }

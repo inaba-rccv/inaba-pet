@@ -5,6 +5,9 @@ export interface CharacterAdventureAttribution {
   favor: number
   satiety: number
   maxHealth: number
+  attack: number
+  defense: number
+  speed: number
 }
 
 export interface AdventureData {
