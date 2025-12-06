@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { DialogueData, DialogueOption, PetEvent } from "@inabapet/types";
+import type { DialogueData, DialogueOption } from "@inabapet/types";
 import "./index.scss"
 import { computed } from 'vue';
 

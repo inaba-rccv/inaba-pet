@@ -1,10 +1,11 @@
 {
   "name": "@inabapet/types",
-  "main": "dist/index.d.ts",
   "version": "1.0.0",
-  "types": "dist/index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "files": [
-    "dist"
+    "**/*.d.ts",
+    "**/*.d.ts.map"
   ],
   "scripts": {
     "build": "tsc"

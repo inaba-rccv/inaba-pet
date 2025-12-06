@@ -27,7 +27,7 @@ const createWindow = () => {
 
   if (isDev) {
     win.loadURL(process.env.VITE_DEV_SERVER_URL!)
-    win.webContents.openDevTools()
+    // win.webContents.openDevTools()
   } else {
     const rendererPath = path.join(process.resourcesPath, 'renderer/index.html')
     win.loadFile(rendererPath)
