@@ -11,8 +11,8 @@ const createWindow = () => {
   const win = new BrowserWindow({
     // width: 500,
     // height: 760,
-    width: 130,
-    height: 120,
+    width: 320,
+    height: 240,
     frame: false,
     transparent: true,
     alwaysOnTop: true,

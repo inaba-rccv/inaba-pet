@@ -3,7 +3,7 @@ import type { IpcMap } from "@inabapet/types"
 const electronApi = window.electronAPI
 
 export const ipcSend = <K extends keyof IpcMap>(channel: K, payload: IpcMap[K]) => {
-  electronApi.send(channel, payload)
+  electronApi?.send(channel, payload)
 }
 
 export function moveWindow(dx: number, dy: number) {

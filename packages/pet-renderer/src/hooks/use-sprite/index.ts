@@ -1,6 +1,6 @@
 import { moveWindow } from "@/modules"
 import type { SpriteModelState } from "@inabapet/types" 
-import { reactive, ref } from "vue"
+import { reactive } from "vue"
 
 export function useSprite(keyState: Map<string, boolean>) {
   const spriteState = reactive<SpriteModelState>({

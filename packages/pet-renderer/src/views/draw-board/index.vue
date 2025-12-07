@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import "./index.scss"
 import { onMounted, ref } from "vue"
-import Sprite from "@/components/sprite/index.vue"
+import Sprite from "@/views/sprite/index.vue"
 import { type CharacterInstance } from "@inabapet/types"
 import { useCharacterStore } from "@/stores/character"
 

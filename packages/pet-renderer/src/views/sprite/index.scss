@@ -1,0 +1,5 @@
+.sprite-container {
+  &:hover .percent-bar__container {
+    opacity: .8;
+  }
+}
