@@ -1,3 +1,4 @@
-export * from "./chat/index"
-export * from "./character/index"
-export * from "./emitter/index"
+export * from "./chat"
+export * from "./emitter"
+export * from "./ipc"
+export * from "./init"

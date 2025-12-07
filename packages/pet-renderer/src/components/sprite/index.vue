@@ -4,7 +4,7 @@ import { useKeyboard } from '@/hooks/use-keyboard';
 import { useSprite } from '@/hooks/use-sprite';
 import { useSpriteMovement } from '@/hooks/use-sprite-movement';
 import { CharacterModels } from '@/models';
-import { ChatService } from '@/modules';
+import { ChatService, setMouseIgnore } from '@/modules';
 import { extractSpriteImageSrc, preloadImage } from '@/utils';
 import type { CharacterInstance, DialogueData, DialogueOption, SpriteModelState } from '@inabapet/types' 
 import StateBar from "@/components/state-bar/index.vue"
@@ -39,12 +39,12 @@ const hypothesisActiveState = ref(false)
 function mouseEnterEvent() {
   if (hypothesisActiveState.value) return
   hypothesisActiveState.value = true
-  window.electronAPI?.setMouseIgnore({ state: false })
+  setMouseIgnore(false)
 }
 function mouseLeaveEvent() {
   if (!hypothesisActiveState.value) return
   hypothesisActiveState.value = false
-  window.electronAPI?.setMouseIgnore({ state: true })
+  setMouseIgnore(true)
 }
 function dialogConfirmEvent(option: DialogueOption) {
   // TODO handler event

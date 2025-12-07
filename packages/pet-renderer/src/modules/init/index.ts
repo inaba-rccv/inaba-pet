@@ -20,8 +20,6 @@ const init = (app: any) => {
       items: []
     }
   })
-
-  console.log(window.electronAPI)
 }
 
 export const appInit = {

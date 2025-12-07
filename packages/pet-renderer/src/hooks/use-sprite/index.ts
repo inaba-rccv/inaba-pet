@@ -1,3 +1,4 @@
+import { moveWindow } from "@/modules"
 import type { SpriteModelState } from "@inabapet/types" 
 import { reactive, ref } from "vue"
 
@@ -35,7 +36,7 @@ export function useSprite(keyState: Map<string, boolean>) {
       spriteState.state = 'stand'
     }
     if (dx !== 0 || dy !== 0) {
-      window.electronAPI.sendMove({ dx, dy })
+      moveWindow(dx, dy)
     }
     requestAnimationFrame(update)
   })

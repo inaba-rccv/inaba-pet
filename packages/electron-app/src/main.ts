@@ -1,6 +1,7 @@
-import { app, BrowserWindow, ipcMain } from 'electron'
+import { app, BrowserWindow } from 'electron'
 import { fileURLToPath } from 'url'
 import path from 'path'
+import { registerIPC } from './ipc/index.ts';
 
 const isDev = !!process.env.VITE_DEV_SERVER_URL
 const __filename = fileURLToPath(import.meta.url);
@@ -24,7 +25,7 @@ const createWindow = () => {
     }
   })
   win.setIgnoreMouseEvents(false, { forward: true })
-
+  
   if (isDev) {
     win.loadURL(process.env.VITE_DEV_SERVER_URL!)
     // win.webContents.openDevTools()
@@ -42,30 +43,11 @@ app.whenReady().then(() => {
       createWindow()
     }
   })
+  registerIPC()
 })
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     app.quit()
   }
-})
-
-const windowWatchMap: Map<Electron.BrowserWindow, Function> = new Map()
-
-ipcMain.on('move-window', (event, { dx, dy }) => {
-  const mainWindow = BrowserWindow.fromWebContents(event.sender);
-  const [currentX, currentY] = mainWindow!.getPosition();
-  const newX = currentX + dx;
-  const newY = currentY + dy;
-  mainWindow!.setPosition(newX, newY);
-})
-
-ipcMain.on('mouse-ignore', (event, { state }) => {
-  const mainWindow = BrowserWindow.fromWebContents(event.sender);
-  mainWindow?.setIgnoreMouseEvents(state, { forward: true })
-})
-
-ipcMain.on('message', (event, callback) => {
-  const mainWindow = BrowserWindow.fromWebContents(event.sender);
-  mainWindow && windowWatchMap.set(mainWindow, callback)
 })

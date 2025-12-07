@@ -1,14 +1,10 @@
 /// <reference types="vite/client" />
 
-export interface IElectronAPI {
-  sendMove: (data: { dx: number; dy: number }) => void;
-  setMouseIgnore: (data: { state: boolean }) => void,
-  // 添加其他你需要的 API 方法
-  onMessage: (callback) => void;
-}
+import type { ElectronAPI } from "@inabapet/types"
+
 
 declare global {
   interface Window {
-    electronAPI: IElectronAPI;
+    electronAPI: ElectronAPI
   }
 }

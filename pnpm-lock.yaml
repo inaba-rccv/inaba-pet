@@ -27,6 +27,8 @@ importers:
         specifier: ^9.0.3
         version: 9.0.3
 
+  packages/constant: {}
+
   packages/electron-app:
     devDependencies:
       electron:
@@ -96,6 +98,12 @@ importers:
       vue-tsc:
         specifier: ^3.1.1
         version: 3.1.5(typescript@5.9.3)
+
+  packages/preload:
+    devDependencies:
+      electron:
+        specifier: ^39.2.4
+        version: 39.2.4
 
   packages/types: {}
 

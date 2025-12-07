@@ -1,6 +1,6 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
-import { appInit } from './modules/init'
+import { appInit } from './modules'
 import App from './App.vue'
 import uindow from 'uindow'
 import 'uindow/style'
