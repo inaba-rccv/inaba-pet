@@ -1,7 +1,7 @@
 import { registerSystemIPC } from './modules/system.ipc.ts'
-import { registerBusinessIPC } from './modules/business.ipc.ts'
+import { registerWindowIPC } from './modules/window.ipc.ts'
 
 export const registerIPC = () => {
   registerSystemIPC()
-  registerBusinessIPC()
+  registerWindowIPC()
 }

@@ -1,12 +1,11 @@
-import { ipcMain } from 'electron'
-import type { SystemInfo } from '@inabapet/types'
+import { registerIpcInvoke } from './factory.ts'
 
 export const registerSystemIPC = () => {
-  ipcMain.handle('system:getInfo', async () => {
+  registerIpcInvoke('system:getInfo', () => {
     return {
       version: '1.0.0',
-      platform: 'win',
-    } satisfies SystemInfo
+      platform: process.platform,
+    }
   })
 }
 
