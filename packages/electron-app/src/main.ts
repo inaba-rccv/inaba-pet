@@ -2,6 +2,8 @@ import { app, BrowserWindow } from 'electron'
 import { fileURLToPath } from 'url'
 import path from 'path'
 import { registerIPC } from './ipc/index.ts';
+import { Adventure } from './cores/adventure/adventure.ts';
+import { getPrimaryCharacter } from './store/index.ts';
 
 const isDev = !!process.env.VITE_DEV_SERVER_URL
 const __filename = fileURLToPath(import.meta.url);
@@ -9,10 +11,10 @@ const __dirname = path.dirname(__filename);
 
 const createWindow = () => {
   const win = new BrowserWindow({
-    // width: 500,
-    // height: 760,
-    width: 320,
-    height: 240,
+    width: 500,
+    height: 760,
+    // width: 320,
+    // height: 240,
     frame: false,
     transparent: true,
     alwaysOnTop: true,
@@ -28,7 +30,7 @@ const createWindow = () => {
   
   if (isDev) {
     win.loadURL(process.env.VITE_DEV_SERVER_URL!)
-    // win.webContents.openDevTools()
+    win.webContents.openDevTools()
   } else {
     const rendererPath = path.join(process.resourcesPath, 'renderer/index.html')
     win.loadFile(rendererPath)
@@ -51,3 +53,15 @@ app.on('window-all-closed', () => {
     app.quit()
   }
 })
+
+
+setTimeout(() => {
+  const character = getPrimaryCharacter()
+  const adventure = new Adventure({
+    character: character,
+    callback: (event, ...args) => {
+      console.log("事件", event, args)
+    }
+  })
+  adventure.start()
+}, 2000)

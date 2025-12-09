@@ -1,4 +1,4 @@
-import { registerIpcInvoke } from './factory.ts'
+import { registerIpcInvoke } from "../../libs/ipc-factory.ts"
 
 export const registerSystemIPC = () => {
   registerIpcInvoke('system:getInfo', () => {

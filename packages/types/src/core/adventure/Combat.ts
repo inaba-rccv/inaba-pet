@@ -1,4 +1,4 @@
-export interface CombatUnitAttribution {
+export type CombatUnitAttribution = {
   id: string
   name: string
   health: number
@@ -6,7 +6,15 @@ export interface CombatUnitAttribution {
   attack: number
   defense: number
   speed: number
-}
+} & (
+  | {
+    type: 'monster',
+    monsterId: number
+  }
+  | {
+    type: 'character'
+  }
+)
 
 export interface CombatUnit {
   attribution: CombatUnitAttribution
@@ -14,10 +22,11 @@ export interface CombatUnit {
 }
 
 export interface CombatOption {
-  combatUnit: CombatUnitAttribution[]
+  combatUnit: [CombatUnitAttribution, CombatUnitAttribution]
+  callback: (event: 'state', value: CombatState) => void
 }
 
-export interface BehaviorLog {
+export interface BehaviorRecord {
   from: CombatUnitAttribution
   to: CombatUnitAttribution
   behavior: Behavior
@@ -26,4 +35,4 @@ export interface BehaviorLog {
 
 export type Behavior = 'attack'
 
-export type CombatState = 'waiting' | 'finished'
+export type CombatState = 'waiting' | 'finished' | 'stop'

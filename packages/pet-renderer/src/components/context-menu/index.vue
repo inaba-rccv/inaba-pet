@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { getSystemInfo } from "@/modules/ipc/invoke";
 import "./index.scss"
+import { getSystemInfo } from '@/modules'
 
 function clickDungeonEvent() {
   getSystemInfo().then(res => {

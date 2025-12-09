@@ -1,4 +1,4 @@
-import { AdventureData } from "../adventure/AdventureData"
+import { CharacterAdventureData } from "../adventure/Adventure"
 
 export type CharacterAnimationState = 'stand' | 'walk'
 
@@ -11,10 +11,11 @@ export interface CharacterAssets {
     }
   }
 }
+
 export interface CharacterInstance {
   id: string
   name: string
-  adventureData: AdventureData
+  adventureData: CharacterAdventureData
   isPrimary: boolean
   stateBarVisiable: boolean
 }

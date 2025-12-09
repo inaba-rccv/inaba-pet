@@ -1,1 +1,1 @@
-export * from "./adventure/index.ts"
+export * from "./adventure/combat.ts"

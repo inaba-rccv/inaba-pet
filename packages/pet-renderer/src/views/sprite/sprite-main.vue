@@ -36,15 +36,15 @@ function clickSpriteEvent() {
 }
 
 function dialogConfirmEvent(option: DialogueOption) {
-  if (option.event === 'favorUp') {
-    characterInstance.adventureData.attribution.favor = Math.min(characterInstance.adventureData.attribution.favor + option.payload![0], 100)
-  } else if (option.event === 'favorDown') {
-    characterInstance.adventureData.attribution.favor = Math.max(characterInstance.adventureData.attribution.favor - option.payload![0], 0)
-  } else if (option.event === 'healthUp') {
-    characterInstance.adventureData.attribution.health = Math.min(characterInstance.adventureData.attribution.health + option.payload![0], 100)
-  } else if (option.event === 'healthDown') {
-    characterInstance.adventureData.attribution.health = Math.max(characterInstance.adventureData.attribution.health - option.payload![0], 0)
-  }
+  // if (option.event === 'favorUp') {
+  //   characterInstance.adventureData.attribution.favor = Math.min(characterInstance.adventureData.attribution.favor + option.payload![0], 100)
+  // } else if (option.event === 'favorDown') {
+  //   characterInstance.adventureData.attribution.favor = Math.max(characterInstance.adventureData.attribution.favor - option.payload![0], 0)
+  // } else if (option.event === 'healthUp') {
+  //   characterInstance.adventureData.attribution.health = Math.min(characterInstance.adventureData.attribution.health + option.payload![0], 100)
+  // } else if (option.event === 'healthDown') {
+  //   characterInstance.adventureData.attribution.health = Math.max(characterInstance.adventureData.attribution.health - option.payload![0], 0)
+  // }
 }
 
 const contextMenuVisiable = ref(false)

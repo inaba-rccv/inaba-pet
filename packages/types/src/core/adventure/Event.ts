@@ -1,11 +1,6 @@
-export type AttributionEvent = 
-  | 'favorUp' 
-  | 'favorDown'
-  | 'healthUp'
-  | 'healthDown'
-  | 'attackUp'
-  | 'attackDown'
-  | 'defenseUp'
-  | 'defenseDown'
-  | 'speedUp'
-  | 'speedDown'
+import { CharacterAdventureAttribution } from "./Adventure";
+
+export interface AttributionEvent {
+  attribution: keyof CharacterAdventureAttribution
+  value: number
+}

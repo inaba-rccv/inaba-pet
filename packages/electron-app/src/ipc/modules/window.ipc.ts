@@ -1,5 +1,5 @@
-import { BrowserWindow, ipcMain } from 'electron'
-import { registerIpc } from './factory.ts'
+import { BrowserWindow } from 'electron'
+import { registerIpc } from '../../libs/ipc-factory.ts'
 
 export const registerWindowIPC = () => {
   registerIpc('window:move', (event, { dx, dy }) => {

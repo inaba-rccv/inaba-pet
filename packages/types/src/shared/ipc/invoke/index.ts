@@ -1,3 +1,5 @@
+import { CharacterInstance } from "src/core"
+
 export interface IpcInvokeMap {
   'system:getInfo': {
     args: void
@@ -5,5 +7,10 @@ export interface IpcInvokeMap {
       version: string,
       platform: string,
     }
+  }
+
+  'character:getInfo': {
+    args: void
+    return: CharacterInstance
   }
 }
