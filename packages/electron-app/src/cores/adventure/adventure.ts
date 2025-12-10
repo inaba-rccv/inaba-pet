@@ -1,12 +1,10 @@
-import type { AdventureCallbackEventType, AdventureEvent, AdventureEventEffect, AdventureOption, AdventureState, CharacterInstance, CombatUnitAttribution, ItemData, MonsterAttribution, PackageItem, StepAdventureEvent } from "@inabapet/types"
+import type { AdventureCallbackEventType, AdventureEvent, AdventureEventEffect, AdventureOption, AdventureState, CharacterAdventureAttribution, CharacterInstance, CombatUnitAttribution, ItemData, MonsterAttribution, PackageItem, StepAdventureEvent } from "@inabapet/types"
 import { Combat } from "./combat.ts"
 
 
 export class Adventure {
-
   private eventInterval: NodeJS.Timeout | null = null
   private tick = 2 * 1000 // 事件间隔
-
 
   private readonly monsters: MonsterAttribution[] = [
     {
@@ -71,17 +69,27 @@ export class Adventure {
     [
       [1, {
         id: 1,
-        name: '精致的小皮鞋',
+        name: 'leather_shoes',
+        alias: '精致的小皮鞋',
         type: 'other',
         usable: false,
+        stackable: false,
         description: '一双精致的小皮鞋',
+        events: [
+          {
+            attribution: 'speed',
+            value: 5,
+          }
+        ]
       }],
       [2, {
         id: 2,
-        name: '干瘪的烤面包',
+        name: 'pineapple_bun',
+        alias: '菠萝包',
         type: 'consume',
         usable: true,
-        description: '看上去很难吃！',
+        stackable: true,
+        description: '看上去很好吃！',
         events: [
           {
             attribution: 'health',
@@ -98,14 +106,17 @@ export class Adventure {
   private eventWeightBox: number[] = []
   private stepEvents: StepAdventureEvent[] = []
   private character: CharacterInstance
+  private characterAdventureAttribution: CharacterAdventureAttribution // 深拷贝后的主角战斗数据
   private state: AdventureState = 'pending'
   // 战利品
   private spoilsItems: PackageItem[] = []
 
-  private callback: (event: AdventureCallbackEventType, ...args: any) => void
+  // TODO 精细化这里的回调函数
+  private callback
 
   constructor(option: AdventureOption) {
     this.character = option.character
+    this.characterAdventureAttribution = JSON.parse(JSON.stringify(this.character.adventureData.attribution))
     this.callback = option.callback
 
     this.totalWeight = this.events.reduce((acc, value) => {
@@ -121,10 +132,33 @@ export class Adventure {
     }, this.tick)
   }
 
-  stop() {
+  destory() {
     if (this.eventInterval) {
       clearInterval(this.eventInterval)
     }
+  }
+
+  getEffects(): AdventureEventEffect[] {
+    // 只有存活才能带走战利品
+    const effects: AdventureEventEffect[] = []
+    effects.push({
+      type: 'attribution',
+      attribution: 'health',
+      isBenefit: false,
+      value: this.character.adventureData.attribution.health - this.characterAdventureAttribution.health
+    })
+    if (this.checkSurvive()) {
+      effects.push(...this.spoilsItems.map(item => ({
+        type: 'bonus',
+        itemId: item.itemId,
+        itemCount: item.count
+      }) as AdventureEventEffect ))
+    }
+    return effects
+  }
+
+  private checkSurvive(): boolean {
+    return this.characterAdventureAttribution.health > 0
   }
 
   private pushEvent(event: StepAdventureEvent): void {
@@ -158,7 +192,7 @@ export class Adventure {
         ...event,
         resultEffects: event.effects ? event.effects : [] // 可能需要处理 比如HP小于0的情况
       })
-      if (this.character.adventureData.attribution.health === 0) {
+      if (this.characterAdventureAttribution.health === 0) {
         this.changeState('finished')
         return
       }
@@ -167,26 +201,25 @@ export class Adventure {
         ...this.findMonster(event.target.monsterId)!,
         type: 'monster',
         monsterId: event.target.monsterId,
-        id: 'dx1Fms3gdEqrfd'
+        id: String(event.target.monsterId)
       })
-      console.log(`与${event.target.monsterId}进行战斗`)
       // 处理战斗effects
       combatEffects.forEach((effect) => {
         if (effect.type === 'attribution') {
-          this.character.adventureData.attribution[effect.attribution] -= effect.value
+          this.characterAdventureAttribution[effect.attribution] -= effect.value
         } else if (effect.type === 'bonus') {
+          // TODO 堆叠战利品
           this.spoilsItems.push({
             itemId: effect.itemId,
             count: effect.itemCount
           })
-          console.log(`获取了${effect.itemCount}${effect.itemId}`)
         }
       })
       this.pushEvent({
         ...event,
         resultEffects: combatEffects
       })
-      if (this.character.adventureData.attribution.health === 0) {
+      if (this.characterAdventureAttribution.health === 0) {
         this.changeState('finished')
         return
       }
@@ -211,7 +244,7 @@ export class Adventure {
             id: this.character.id,
             type: 'character',
             name: this.character.name,
-            ...this.character.adventureData.attribution
+            ...this.characterAdventureAttribution
           },
           combatUnit
         ],
@@ -224,18 +257,4 @@ export class Adventure {
       combat.start()
     })
   }
-
-  // private processEffectText(effects: AdventureEventEffect[]): string {
-  //   let text = effects.reduce((acc, effect) => {
-  //     if (effect.type === 'attribution') {
-  //       if (effect.attribution === 'health') {
-  //         acc += (effect.isBenefit ? '恢复了' : '减少了') + effect.value + '点HP'
-  //       }
-  //     } else if (effect.type === 'bonus') {
-
-  //     }
-  //     return acc
-  //   }, '')
-  //   return text
-  // }
 }

@@ -1,7 +1,8 @@
 export interface ElectronAPI {
   send: (channel: string, data?: any) => void
   invoke: (channel: string, data?: any) => Promise<any>
-  on: (channel: string, callback: (data: any) => void) => void
+  on: (channel: string, callback: (ipc: any, data: any) => void) => Promise<Function>
+  once: (channel: string, listener: (data: any) => void) => void
   off: (channel: string, callback: (data: any) => void) => void
 }
 

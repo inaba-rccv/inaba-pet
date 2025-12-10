@@ -12,6 +12,6 @@ export const registerWindowIPC = () => {
 
   registerIpc('window:mouse-ignore', (event, { state }) => {
     const mainWindow = BrowserWindow.fromWebContents(event.sender)
-    mainWindow?.setIgnoreMouseEvents(state, { forward: true })
+    // mainWindow?.setIgnoreMouseEvents(state, { forward: true })
   })
 }

@@ -4,7 +4,7 @@ import { AttributionEvent } from "../adventure/Event"
 export interface DialogueOption {
   label: string
   type: ThemeColorType
-  event?: AttributionEvent
+  event: AttributionEvent[]
   payload?: any[]
 }
 

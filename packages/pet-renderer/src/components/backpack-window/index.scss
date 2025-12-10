@@ -1,0 +1,31 @@
+.backpack {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 3px;
+  width: max-content;
+  transform: translate(-61px, 0);
+  opacity: 1;
+  transition-duration: .2s;
+  .itembox {
+    box-sizing: border-box;
+    border: 1px solid #757575;
+    position: relative;
+    // background-color: #282828;
+    height: 32px;
+    width: 32px;
+    .item--count {
+      font-size: 11px;
+      color: var(--ui-color-info-dark);
+      text-shadow: 
+        -1px -1px 0 #fff, /* 左上 */
+        1px -1px 0 #fff,  /* 右上 */
+        -1px 1px 0 #fff,  /* 左下 */
+        1px 1px 0 #fff;
+      line-height: 1;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      user-select: none;
+    }
+  }
+}

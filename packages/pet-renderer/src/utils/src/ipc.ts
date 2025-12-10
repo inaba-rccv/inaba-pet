@@ -11,3 +11,7 @@ export const ipcInvoke = <K extends keyof IpcInvokeMap>(
 export const ipcSend = <K extends keyof IpcMap>(channel: K, payload: IpcMap[K]) => {
   electronApi?.send(channel, payload)
 }
+
+export const ipcWatch = (channel: string, callback: (_: any, data: any) => void) => {
+  return electronApi.on(channel, callback)
+}

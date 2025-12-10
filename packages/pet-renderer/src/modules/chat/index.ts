@@ -20,8 +20,10 @@ export class ChatService {
         option: [
           {
             label: '嗯呢',
-            event: 'favorUp',
-            payload: [20],
+            event: {
+              attribution: 'favor',
+              value: 1
+            },
             type: 'warning'
           },
           {

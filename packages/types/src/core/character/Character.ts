@@ -12,10 +12,10 @@ export interface CharacterAssets {
   }
 }
 
+export type CharacterState = 'nothing' | 'adventure'
+
 export interface CharacterInstance {
   id: string
   name: string
   adventureData: CharacterAdventureData
-  isPrimary: boolean
-  stateBarVisiable: boolean
 }

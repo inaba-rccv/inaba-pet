@@ -1,9 +1,8 @@
 import { app, BrowserWindow } from 'electron'
 import { fileURLToPath } from 'url'
 import path from 'path'
-import { registerIPC } from './ipc/index.ts';
-import { Adventure } from './cores/adventure/adventure.ts';
-import { getPrimaryCharacter } from './store/index.ts';
+import { registerIPC } from './ipc/index.ts'
+import { primaryCharacter } from "./service/character/index.ts" // 初始化角色
 
 const isDev = !!process.env.VITE_DEV_SERVER_URL
 const __filename = fileURLToPath(import.meta.url);
@@ -17,7 +16,7 @@ const createWindow = () => {
     // height: 240,
     frame: false,
     transparent: true,
-    alwaysOnTop: true,
+    alwaysOnTop: false,
     // resizable: false,
     skipTaskbar: true,
     webPreferences: {
@@ -26,12 +25,12 @@ const createWindow = () => {
       preload: path.join(__dirname, 'preload', 'index.js'),
     }
   })
-  win.setIgnoreMouseEvents(false, { forward: true })
   
   if (isDev) {
     win.loadURL(process.env.VITE_DEV_SERVER_URL!)
     win.webContents.openDevTools()
   } else {
+    win.setIgnoreMouseEvents(true, { forward: true })
     const rendererPath = path.join(process.resourcesPath, 'renderer/index.html')
     win.loadFile(rendererPath)
     // win.webContents.openDevTools()
@@ -55,13 +54,13 @@ app.on('window-all-closed', () => {
 })
 
 
-setTimeout(() => {
-  const character = getPrimaryCharacter()
-  const adventure = new Adventure({
-    character: character,
-    callback: (event, ...args) => {
-      console.log("事件", event, args)
-    }
-  })
-  adventure.start()
-}, 2000)
+// setTimeout(() => {
+//   const character = getPrimaryCharacter()
+//   const adventure = new Adventure({
+//     character: character,
+//     callback: (event, ...args) => {
+//       console.log("事件", event, args)
+//     }
+//   })
+//   adventure.start()
+// }, 2000)

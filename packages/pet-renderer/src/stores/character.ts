@@ -1,17 +1,22 @@
 import { defineStore } from 'pinia'
-import type { CharacterInstance } from '@inabapet/types'
+import type { CharacterInstance, PackageItem } from '@inabapet/types'
 import { ref } from 'vue'
 
 export const useCharacterStore = defineStore('character', () => {
-  const characters = ref<CharacterInstance>()
+  const character = ref<CharacterInstance>()
 
   function setCharacter(data: CharacterInstance) {
-    characters.value = data
+    console.log('data', data)
+    character.value = data
   }
 
   function getCharacter() {
-    return characters
+    return character
   }
 
-  return { setCharacter, getCharacter }
+  function setCharacterAdventureItem(adventureItems: PackageItem[]) {
+    character.value && (character.value.adventureData.items = adventureItems)
+  }
+
+  return { setCharacter, getCharacter, setCharacterAdventureItem }
 })

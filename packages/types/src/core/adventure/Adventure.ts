@@ -1,21 +1,25 @@
 import { CharacterInstance } from "../character"
-import { PackageItem } from "../item"
+import { EquipmentItem, PackageItem } from "../item"
 import { BehaviorRecord } from "./Combat"
 
 
 export interface CharacterAdventureData {
   attribution: CharacterAdventureAttribution
+  equipment: [EquipmentItem | null, EquipmentItem | null]
   items: (PackageItem | null)[]
 }
 
-export interface CharacterAdventureAttribution {
+export interface AdventureAttribution {
   health: number
-  favor: number
-  satiety: number
   maxHealth: number
   attack: number
   defense: number
   speed: number
+}
+
+export interface CharacterAdventureAttribution extends AdventureAttribution {
+  favor: number
+  satiety: number
 }
 
 export type AdventureEventEffect = 
@@ -52,7 +56,7 @@ export interface AdventureEventTarget {
 }
 
 export type StepAdventureEvent = AdventureEvent & {
-  combatRecords?: BehaviorRecord // 实际效果
+  combatRecords?: BehaviorRecord 
   resultEffects: AdventureEventEffect[] // 实际效果
 }
 
@@ -66,5 +70,5 @@ export type AdventureCallbackEventType = 'event' | 'state'
 
 export interface AdventureOption {
   character: CharacterInstance
-  callback: (event: AdventureCallbackEventType, args: any) => void
+  callback: (event: AdventureCallbackEventType, payload: any) => void
 }

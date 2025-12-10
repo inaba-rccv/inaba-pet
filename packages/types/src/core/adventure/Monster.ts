@@ -1,16 +1,13 @@
 import { PackageItem } from "../item"
+import { AdventureAttribution } from "./Adventure"
 
 export interface DropItem extends PackageItem {
   rate: number // 0-1 掉落率
 }
 
-export interface MonsterAttribution {
+// 图鉴
+export interface MonsterAttribution extends AdventureAttribution {
   id: number
   name: string
-  health: number
-  maxHealth: number
-  attack: number
-  defense: number
-  speed: number
   dropItems: DropItem[]
 }

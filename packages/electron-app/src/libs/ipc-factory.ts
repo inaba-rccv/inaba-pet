@@ -1,5 +1,5 @@
 import { ipcMain, type IpcMainEvent, type IpcMainInvokeEvent } from 'electron'
-import type { IpcInvokeMap, IpcMap } from '@inabapet/types' 
+import type { IpcInvokeMap, IpcListnerMap, IpcMap } from '@inabapet/types' 
 
 // IPC 注册工厂
 export function registerIpc<K extends keyof IpcMap>(
@@ -7,11 +7,15 @@ export function registerIpc<K extends keyof IpcMap>(
   handler: (event: IpcMainEvent, payload: IpcMap[K]) => void
 ) {
   ipcMain.on(channel, (event, payload) => {
-    // 类型断言 + TS 类型检查
     handler(event, payload as IpcMap[K])
   })
 }
 
+/**
+ * 
+ * @param channel 
+ * @param handler 
+ */
 export function registerIpcInvoke<
   K extends keyof IpcInvokeMap
 >(

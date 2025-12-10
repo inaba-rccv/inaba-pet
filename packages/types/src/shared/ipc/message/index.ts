@@ -1,10 +1,10 @@
 
 type DungeonLevel = 'easy' | 'normal' | 'difficult'
 
-export interface GoDungeon {
-  id: string
-  level: DungeonLevel
-}
+// export interface GoDungeon {
+//   id: string
+//   level: DungeonLevel
+// }
 
 export interface MovePayload {
   dx: number
@@ -16,8 +16,8 @@ export interface MouseIgnorePayload {
 }
 
 export type IpcMap = {
-  'dungeon:go': GoDungeon
-  'dungeon:exit': void
+  'adventure:go': void
+  'adventure:exit': void
   'window:move': MovePayload
   'window:mouse-ignore': MouseIgnorePayload
 }

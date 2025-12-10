@@ -2,12 +2,18 @@ import { AttributionEvent } from "../adventure/Event"
 
 export type ItemType = 'equipment' | 'consume' | 'other'
 export interface ItemData {
-  id: number
-  name: string
+  id: number // primary
+  name: string // primary
+  alias: string
   description: string
   type: ItemType
-  usable?: boolean
-  events?: AttributionEvent[]
+  usable: boolean
+  stackable: boolean
+  events: AttributionEvent[]
+}
+
+export interface EquipmentItem {
+  itemId: number
 }
 
 export interface PackageItem {

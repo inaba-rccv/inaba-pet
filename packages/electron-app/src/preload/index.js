@@ -9,9 +9,11 @@ contextBridge.exposeInMainWorld('electronAPI', {
     return ipcRenderer.invoke(channel, data)
   },
 
-  on: (channel, callback) => {
-    const handler = (_event, ...args) => callback(args[0])
-    ipcRenderer.on(channel, handler);
+  on: (channel, listener) => {
+    // const handler = (_event, ...args) => callback(args[0])
+    // ipcRenderer.on(channel, handler);
+    ipcRenderer.on(channel, listener)
+    return () => ipcRenderer.removeListener(channel, listener)
   },
 
   once(channel, listener) {
@@ -21,8 +23,7 @@ contextBridge.exposeInMainWorld('electronAPI', {
     ipcRenderer.once(channel, wrapped)
   },
 
-  off: (channel, callback) => {
-    // 在实际生产中，你可能需要一个更健壮的机制来移除特定的监听器。
-    ipcRenderer.removeListener(channel, callback)
+  removeListener: (channel, listener) => {
+    ipcRenderer.removeListener(channel, listener)
   }
 })

@@ -111,6 +111,12 @@ p:empty::before {
 .grid-cols-3 {
 	grid-template-columns: repeat(3, minmax(0, 1fr));
 }
+.grid-cols-4 {
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.grid-cols-5 {
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+}
 .gap {
 	gap: var(--reby-spacing-default)
 }

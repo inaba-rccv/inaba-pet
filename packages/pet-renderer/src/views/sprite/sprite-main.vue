@@ -11,6 +11,7 @@ import StateBar from "@/components/state-bar/index.vue"
 import DialogBox from "@/components/dialog-box/index.vue"
 import { characterInstanceInjectKey, characterModelInjectKey } from '.'
 import ContextMenu from "@/components/context-menu/index.vue"
+import BackpackWindow from "@/components/backpack-window/index.vue"
 
 const characterModel = inject(characterModelInjectKey)
 const characterInstance = inject(characterInstanceInjectKey) as CharacterInstance
@@ -35,19 +36,12 @@ function clickSpriteEvent() {
   dialogVisiable.value = true
 }
 
-function dialogConfirmEvent(option: DialogueOption) {
-  // if (option.event === 'favorUp') {
-  //   characterInstance.adventureData.attribution.favor = Math.min(characterInstance.adventureData.attribution.favor + option.payload![0], 100)
-  // } else if (option.event === 'favorDown') {
-  //   characterInstance.adventureData.attribution.favor = Math.max(characterInstance.adventureData.attribution.favor - option.payload![0], 0)
-  // } else if (option.event === 'healthUp') {
-  //   characterInstance.adventureData.attribution.health = Math.min(characterInstance.adventureData.attribution.health + option.payload![0], 100)
-  // } else if (option.event === 'healthDown') {
-  //   characterInstance.adventureData.attribution.health = Math.max(characterInstance.adventureData.attribution.health - option.payload![0], 0)
-  // }
-}
+function dialogConfirmEvent(option: DialogueOption) {}
 
 const contextMenuVisiable = ref(false)
+const windowSwitch = ref({
+  backpackVisiable: false
+})
 function clickContextEvent(e: MouseEvent) {
   e.preventDefault()
   // 切换右键菜单
@@ -69,7 +63,6 @@ onMounted(() => {
     @contextmenu="clickContextEvent"
   />
   <state-bar
-    v-show="characterInstance?.stateBarVisiable"
     :option="characterInstance.adventureData.attribution"
   ></state-bar>
   <dialog-box
@@ -77,5 +70,12 @@ onMounted(() => {
     :option="dialogOption!"
     @confirm="dialogConfirmEvent"  
   ></dialog-box>
-  <context-menu v-show="contextMenuVisiable"></context-menu>
+  <context-menu
+    v-show="contextMenuVisiable"
+    v-model="windowSwitch"  
+  ></context-menu>
+  <backpack-window
+    v-show="windowSwitch.backpackVisiable"
+    :package-items="characterInstance.adventureData.items"  
+  ></backpack-window>
 </template>

@@ -9,6 +9,11 @@ export interface IpcInvokeMap {
     }
   }
 
+  'character:login': {
+    args: void
+    return: void
+  }
+
   'character:getInfo': {
     args: void
     return: CharacterInstance

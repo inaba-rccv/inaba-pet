@@ -1,12 +1,11 @@
-export type CombatUnitAttribution = {
+import { AdventureAttribution } from "./Adventure"
+
+type CombatBaseAttribution = AdventureAttribution & {
   id: string
   name: string
-  health: number
-  maxHealth: number
-  attack: number
-  defense: number
-  speed: number
-} & (
+}
+
+export type CombatUnitAttribution = CombatBaseAttribution & (
   | {
     type: 'monster',
     monsterId: number
