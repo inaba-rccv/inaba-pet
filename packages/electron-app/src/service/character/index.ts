@@ -1,6 +1,7 @@
-import type { AdventureEventEffect, CharacterInstance, CharacterState, IpcListnerMap } from "@inabapet/types"
+import type { AdventureEventEffect, CharacterInstance, CharacterState, IpcListnerMap, PackageItem } from "@inabapet/types"
 import { Adventure } from "../../cores/index.ts"
 import { getPrimaryCharacter, setPrimaryCharacter } from "../../store/index.ts"
+import { backpackInstance } from "./backpack.ts"
 
 class PrimaryCharacter {
   private character: CharacterInstance
@@ -41,16 +42,18 @@ class PrimaryCharacter {
   }
 
   handleEffects(effects: AdventureEventEffect[] = []) {
+    const spoils: PackageItem[] = []
     effects.forEach(effect => {
       if (effect.type === 'attribution') {
         this.character.adventureData.attribution[effect.attribution] -= effect.value
       } else if (effect.type === 'bonus') {
-        this.character.adventureData.items.push({
+        spoils.push({
           itemId: effect.itemId,
           count: effect.itemCount
         })
       }
     })
+    this.character.adventureData.items = backpackInstance.handleItems(this.character.adventureData.items, spoils)
     this.saveCache()
   }
 

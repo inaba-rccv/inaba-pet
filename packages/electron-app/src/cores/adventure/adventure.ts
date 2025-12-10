@@ -18,7 +18,7 @@ export class Adventure {
       dropItems: [{
         rate: 1,
         itemId: 1,
-        count: 1
+        count: 2
       }]
     },
     {
@@ -31,8 +31,8 @@ export class Adventure {
       speed: 1,
       dropItems: [{
         rate: 1,
-        itemId: 2,
-        count: 2
+        itemId: 1001,
+        count: 1
       }]
     }
   ]
@@ -65,42 +65,7 @@ export class Adventure {
     }] }
   ]
 
-  private readonly itemGuideMap = new Map<number, ItemData>(
-    [
-      [1, {
-        id: 1,
-        name: 'leather_shoes',
-        alias: '精致的小皮鞋',
-        type: 'other',
-        usable: false,
-        stackable: false,
-        description: '一双精致的小皮鞋',
-        events: [
-          {
-            attribution: 'speed',
-            value: 5,
-          }
-        ]
-      }],
-      [2, {
-        id: 2,
-        name: 'pineapple_bun',
-        alias: '菠萝包',
-        type: 'consume',
-        usable: true,
-        stackable: true,
-        description: '看上去很好吃！',
-        events: [
-          {
-            attribution: 'health',
-            value: 5
-          }
-        ]
-      }]
-    ]
-  )
-
-  private totalStep = 20 // 
+  private totalStep = 5 // 
   private step = 0
   private totalWeight = 0
   private eventWeightBox: number[] = []

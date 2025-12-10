@@ -1,4 +1,4 @@
-import { ThemeColorType } from "../../shared"
+import { ThemeColorType } from "../../shared/index"
 import { AttributionEvent } from "../adventure/Event"
 
 export interface DialogueOption {

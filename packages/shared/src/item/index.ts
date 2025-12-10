@@ -1,6 +1,6 @@
-import { ItemData } from "@inabapet/types";
+// import { ItemData } from "@inabapet/types";
 
-export const itemGuide: ItemData[] = [
+export const itemGuide: any[] = [
   {
     id: 1001,
     name: 'leather_shoes',

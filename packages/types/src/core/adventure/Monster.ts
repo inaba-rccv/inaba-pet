@@ -1,4 +1,4 @@
-import { PackageItem } from "../item"
+import { PackageItem } from "../item/index"
 import { AdventureAttribution } from "./Adventure"
 
 export interface DropItem extends PackageItem {

@@ -8,7 +8,8 @@
     "lib": ["ESNext"],
     "baseUrl": ".",
     "paths": {
-      "@inabapet/types": ["packages/types/src/index.ts"]
+      "@inabapet/types": ["packages/types/src/index.ts"],
+      "@inabapet/shared": ["packages/shared/src/index.ts"]
     },
     "resolveJsonModule": true,
     "sourceMap": true,

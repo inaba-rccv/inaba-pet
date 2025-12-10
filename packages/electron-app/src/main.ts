@@ -33,7 +33,6 @@ const createWindow = () => {
     win.setIgnoreMouseEvents(true, { forward: true })
     const rendererPath = path.join(process.resourcesPath, 'renderer/index.html')
     win.loadFile(rendererPath)
-    // win.webContents.openDevTools()
   }
 }
 
@@ -52,15 +51,3 @@ app.on('window-all-closed', () => {
     app.quit()
   }
 })
-
-
-// setTimeout(() => {
-//   const character = getPrimaryCharacter()
-//   const adventure = new Adventure({
-//     character: character,
-//     callback: (event, ...args) => {
-//       console.log("事件", event, args)
-//     }
-//   })
-//   adventure.start()
-// }, 2000)

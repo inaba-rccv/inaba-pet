@@ -7,7 +7,8 @@
     "dev": "concurrently \"pnpm --filter @inabapet/electron-app dev\" \"pnpm --filter @inabapet/pet-renderer dev\"",
     "build": "pnpm -r --filter @inabapet/electron-app dist",
     "cores:build": "pnpm -r --filter @inabapet/pet-renderer build-only",
-    "types:build": "pnpm -r --filter @inabapet/types build"
+    "types:build": "pnpm -r --filter @inabapet/types build",
+    "shared:build": "pnpm -r --filter @inabapet/shared build"
   },
   "keywords": ["table pet"],
   "author": {
@@ -16,6 +17,7 @@
   "license": "ISC",
   "devDependencies": {
     "@inabapet/types": "workspace:*",
+    "@inabapet/shared": "workspace:*",
     "@types/node": "^24.10.1",
     "concurrently": "^9.2.1",
     "cross-env": "^10.1.0",

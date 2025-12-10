@@ -1,5 +1,5 @@
-import { CharacterInstance } from "../character"
-import { EquipmentItem, PackageItem } from "../item"
+import { CharacterInstance } from "../character/index"
+import { EquipmentItem, PackageItem } from "../item/index"
 import { BehaviorRecord } from "./Combat"
 
 
