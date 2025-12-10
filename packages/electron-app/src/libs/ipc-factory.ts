@@ -1,5 +1,5 @@
 import { ipcMain, type IpcMainEvent, type IpcMainInvokeEvent } from 'electron'
-import type { IpcInvokeMap, IpcListnerMap, IpcMap } from '@inabapet/types' 
+import type { IpcInvokeMap, IpcMap } from '@inabapet/types' 
 
 // IPC 注册工厂
 export function registerIpc<K extends keyof IpcMap>(

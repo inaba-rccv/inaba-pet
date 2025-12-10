@@ -21,7 +21,7 @@ export const characterInitData: CharacterInstance = {
     }, {
       itemId: 1001,
       count: 1
-    }, null]
+    }, null, null, null, null, null, null]
   }
 }
 

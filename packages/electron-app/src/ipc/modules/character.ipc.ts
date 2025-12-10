@@ -1,5 +1,4 @@
-import { registerIpc, registerIpcInvoke } from "../../libs/ipc-factory.ts"
-import { getPrimaryCharacter } from "../../store/index.ts"
+import { registerIpcInvoke } from "../../libs/ipc-factory.ts"
 import { primaryCharacter } from "../../service/character/index.ts"
 
 export const registerCharacterIPC = () => {
