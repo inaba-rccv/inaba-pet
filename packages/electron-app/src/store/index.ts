@@ -15,19 +15,11 @@ export const characterInitData: CharacterInstance = {
       speed: 5,
     },
     equipment: [null, null],
-    items: [null, null, {
-      itemId: 1,
-      count: 2
-    }, {
-      itemId: 1001,
-      count: 1
-    }, null, null, null, null, null, null]
+    items: [null, null, null, null, null, null, null, null, null, null]
   }
 }
 
 export function getPrimaryCharacter(): CharacterInstance {
-  setStore('primaryCharacter', null)
-
   let characterInstance: CharacterInstance = getStore('primaryCharacter')
   if (!characterInstance) {
     setStore('primaryCharacter', characterInitData)
